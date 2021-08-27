@@ -1,0 +1,176 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+body{
+   
+    
+    margin: 0;
+}
+
+
+
+.memory-game{
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+    
+}
+
+
+
+
+
+.card{
+    width: calc(25% - 10px);
+    height: calc(33.333% - 10px);
+    margin: 5px;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+.card:active{
+    transform: scale(.97);
+    transition: transform .2s;
+}
+
+.card.flip{
+   transform: rotateY(180deg);
+}
+
+
+
+
+
+
+
+.front-face,
+.back-face{
+    width: 100%;
+    height: 100%;
+    padding: 1px;
+    position: absolute;
+    border-radius: 5px;
+    background: whitesmoke;
+    backface-visibility: hidden;
+}
+
+.front-face{
+    transform: rotateY(180deg);
+}
+
+
+.page-title{
+    font-family: fantasy, serif;
+    color: white;
+    text-align: center;
+    font-size: 6em;
+    margin: 0%;
+    padding-bottom: 0%;
+    
+}
+
+.game-info-container{
+    grid-column: 1/ -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+h4 {
+    color: white;
+    padding-left: 400px;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    margin-top: 0%;
+    grid-gap: 0%;
+    font-family: cursive, serif;
+    
+}
+
+.game-info{
+    color: white;
+    padding-left: 18px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    font-family: fantasy, serif;
+    justify-content: center;
+   
+ 
+    font-size: 40px;
+}
+
+.game-container {
+    margin: 0px;
+    display: grid;
+    grid-template-columns: repeat(4) auto;
+    grid-gap: 0px;
+    justify-content: center;
+    perspective: 500px;
+   
+}
+
+.overlay-text{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: white;
+    font-family: fantasy, serif;
+    transition: background-color 500ms, font-size 500ms;
+}
+
+
+.overlay-text-small{
+    font-size: .3em;
+}
+
+.overlay-text.visible{
+    display: flex;
+    flex-direction: column;
+    animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+    from{
+        backgroun-color: rgba(0, 0, 0, 0);
+        font-size: 0;
+    }
+    to{
+        background-color: rgba(0, 0, 0, .8);
+        font-size: 10em;
+    }
+   
+
+}
+@media(max-width: 600px){
+    .memory-game{
+        grid-template-columns: repeat(2) auto;
+    }
+    .game-info-container{
+        flex-direction: column;
+        align-items: center;
+    }
+}
